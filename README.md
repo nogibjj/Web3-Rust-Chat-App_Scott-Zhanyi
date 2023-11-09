@@ -1,4 +1,4 @@
-# Web3_rust_chatapp
+# Web3 Rust Chatapp
 This is a simple chat application built with Rust and Rocket framework on web3. 
 
 # Installation
