@@ -10,6 +10,10 @@ use rocket::serde::{Serialize, Deserialize};
 use rocket::tokio::sync::broadcast::{channel, Sender, error::RecvError};
 use rocket::tokio::select;
 
+use ethers::prelude::*;
+use ethers::core::rand;
+use std::sync::Arc;
+
 
 #[derive(Debug, Clone, FromForm, Serialize, Deserialize)]
 #[cfg_attr(test, derive(PartialEq, UriDisplayQuery))]
@@ -21,6 +25,12 @@ struct Message {
     pub username: String,
     pub message: String,
 }
+
+struct EthereumClient {
+    client: Arc<SignerMiddleware<Provider<Http>, Wallet>>,
+    contract: MyContract<SignerMiddleware<Provider<Http>, Wallet>>,
+}
+
 
 /// Returns an infinite stream of server-sent events. Each event is a message
 /// pulled from a broadcast queue sent by the `post` handler.
@@ -48,6 +58,11 @@ async fn events(queue: &State<Sender<Message>>, mut end: Shutdown) -> EventStrea
 fn post(form: Form<Message>, queue: &State<Sender<Message>>) {
     // A send 'fails' if there are no active subscribers. That's okay.
     let _res = queue.send(form.into_inner());
+
+    let result = eth_client.contract.my_function().call().await.unwrap();
+
+    let contract_address = "your-contract-address".parse().unwrap();
+    let contract = MyContract::new(contract_address, client.clone());
 }
 
 
