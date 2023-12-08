@@ -11,13 +11,21 @@ time = "0.3.15"
 shuttle-service = { version = "0.11.0", features = ["web-rocket"] }
 
 reqwest = { version = "0.11", features = ["json"] }
-tokio = { version = "1", features = ["full"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
+ethers = { version = "0.6", features = ["rustls"]}
+web3 = "0.18.0"
+tokio = { version = "1.15.0", features = ["full"] }
+secp256k1 = "0.21.0"
+tracing-subscriber = "0.3.17"
+
+
+
 
 
 [dev-dependencies]
 rand = "0.8"
+
 
 
 [lib]
