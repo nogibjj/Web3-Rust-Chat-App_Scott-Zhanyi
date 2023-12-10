@@ -20,6 +20,8 @@ The development process for this chat app involved the following steps:
 * Implementing WebSocket support using the shuttle service.
 * Testing the application and fixing any bugs or errors.
 * deploy the application on web3 using wasmd. 
+* Add user wallet for the chatapp
+* store data on both s3 and IPFS
 
 
 
@@ -44,3 +46,65 @@ The following packages were used to build this chat app:
 > time = "0.3.15"
 
 > shuttle-service = { version = "0.11.0", features = ["web-rocket"] }
+
+
+# Run 
+
+## start IPFS service 
+
+1.  Download the IPFS 
+
+    ### macOS
+    ```
+    brew install ipfs
+    ```
+
+    ### Linux (# Replace v0.10.0 with the latest version available.)
+    ```
+    wget https://dist.ipfs.io/go-ipfs/v0.10.0/go-ipfs_v0.10.0_linux-amd64.tar.gz
+    tar xvfz go-ipfs_v0.10.0_linux-amd64.tar.gz
+    cd go-ipfs
+    sudo bash install.sh
+    ```
+    ### On windows 
+    On Windows:
+    Download the installer from the [IPFS website](https://ipfs.io/#install) and follow the installation wizard.
+
+
+2. Initialize IPFS Node
+    After installing, you need to initialize your IPFS node. This step creates a new IPFS configuration file and generates a new peer identity for your node.
+
+    Run:
+    ```
+    ipfs init
+    ```
+
+    3. Run IPFS Daemon
+    To start your IPFS node, run:
+    ```
+    ipfs daemon
+    ```
+
+## Start the app
+
+```
+cd chatapp
+cargo run
+```
+
+
+## Accessing Files
+
+### From IPFS service
+You can access files stored on IPFS via the HTTP gateway:
+```
+http://localhost:8080/ipfs/<hash>
+```
+Replace <hash> with the hash returned from the app store command.
+
+![ipfs](chatapp/static/pic/ipfs.png)
+
+### From s3 
+login into s3 bucket and open the file 
+
+![s3](chatapp/static/pic/s3.png)

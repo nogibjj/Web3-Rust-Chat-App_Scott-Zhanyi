@@ -140,17 +140,19 @@ function init() {
     const room = STATE.room;
     const message = messageField.value;
     const username = usernameField.value || "guest";
-    if (!message || !username) return;
+    const wallet = document.getElementById('wallet').value; // Get the wallet address
+    if (!message || !username || !wallet) return;
 
     if (STATE.connected) {
-      fetch("/message", {
-        method: "POST",
-        body: new URLSearchParams({ room, username, message }),
-      }).then((response) => {
-        if (response.ok) messageField.value = "";
-      });
+        fetch("/message", {
+            method: "POST",
+            body: new URLSearchParams({ room, username, message, wallet }), // Include the wallet address
+        }).then((response) => {
+            if (response.ok) messageField.value = "";
+        });
     }
-  })
+})
+
 
   // Set up the new room handler.
   newRoomForm.addEventListener("submit", (e) => {
@@ -170,3 +172,5 @@ function init() {
 }
 
 init();
+
+
