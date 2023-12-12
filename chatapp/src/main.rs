@@ -140,10 +140,11 @@ async fn post(
         Ok(Err(e)) => eprintln!("Failed to upload to IPFS: {}", e),
         Err(e) => eprintln!("IPFS upload task panicked: {:?}", e),
     }
-
+    let wallet_address = H160::from_str(&message.wallet)
+    .map_err(|e| format!("Invalid wallet address: {}", e))?;
 
     // Minting logic
-    match contract.mint().send().await {
+    match contract.mint_user(wallet_address).send().await {
         Ok(tx) => {
             println!("Minted successfully: {:?}", tx);
             Ok(())
