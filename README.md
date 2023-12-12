@@ -96,7 +96,8 @@ cargo run
 Every time you send a message with your wallet address entered, you can get CTC minted. 
 <img width="1311" alt="Screenshot 2023-12-12 at 5 06 14 PM" src="https://github.com/nogibjj/Web3-Rust-Chat-App_Scott-Zhanyi/assets/55003943/c9a8a38f-a49b-43ad-b234-09415226aa58">
 
-You can check the transaction with https://goerli.etherscan.io/ or directly check the token value change via MetaMask (You need to import the token from the Contract Address First, Please contact us for the defualt contract address). 
+You can check the transaction with https://goerli.etherscan.io/ or directly check the token value change via MetaMask (You need to import the token from the Contract Address First, Please contact us for the defualt contract address).
+
 <img width="294" alt="Screenshot 2023-12-12 at 5 08 33 PM" src="https://github.com/nogibjj/Web3-Rust-Chat-App_Scott-Zhanyi/assets/55003943/410fd46d-ed1c-42e9-b50a-f8e1bee37aef">
 
 
