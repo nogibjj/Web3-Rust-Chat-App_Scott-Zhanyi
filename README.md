@@ -1,5 +1,16 @@
 # Web3 Rust Chatapp
-This is a simple chat application built with Rust and Rocket framework on web3. 
+This is a simple chat application built with Rust and 
+![Screenshot 2023-12-14 at 12 24 46 AM](https://github.com/nogibjj/Web3-Rust-Chat-App_Scott-Zhanyi/assets/43226003/842aa48b-e33d-459c-a5a8-283fe6c0e275)
+
+The chatroom allow user to create the privite chatroom, and for each message the user send, we will provide user with a CTC coin. 
+
+### Inpute
+* Chatroom name
+* Guest name
+* Wallet address
+* Message
+
+Rocket framework on web3. 
 
 # Installation
 To run this application, you'll need to have Rust and Cargo installed. If you don't have them installed, you can download and install them from https://www.rust-lang.org/learn/get-started.
